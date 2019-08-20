@@ -3,7 +3,7 @@ import {
     BAD_MOVIE,
     DATA_LOADED,
     DATA_REQUESTED,
-    DATA_YIELDED,
+    LOCALES_LOADED,
     REMOVE_ERROR,
     REMOVE_MOVIE
 } from "../constants/action-types";
@@ -26,15 +26,30 @@ export function removeError(payload) {
 
 export function getData() {
     return function (dispatch) {
-       return fetch("https://technoverse-6bec.restdb.io/rest/movies" ,{
-           method: 'get',
-           headers: new Headers({
-               'apikey': '5c91422ccac6621685acc07e'
-           })
-       })
+        return fetch("https://technoverse-6bec.restdb.io/rest/movies" ,{
+            method: 'get',
+            headers: new Headers({
+                'apikey': '5c91422ccac6621685acc07e'
+            })
+        })
             .then(response => response.json())
             .then(json => {
                 dispatch({ type: DATA_LOADED, payload: json });
+            });
+    };
+}
+
+export function getLocales() {
+    return function (dispatch) {
+        return fetch("https://technoverse-6bec.restdb.io/rest/locales" ,{
+            method: 'get',
+            headers: new Headers({
+                'apikey': '5c91422ccac6621685acc07e'
+            })
+        })
+            .then(response => response.json())
+            .then(json => {
+                dispatch({ type: LOCALES_LOADED, payload: json });
             });
     };
 }

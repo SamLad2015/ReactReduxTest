@@ -5,13 +5,15 @@ import {
     DATA_REQUESTED,
     DATA_YIELDED,
     REMOVE_ERROR,
-    REMOVE_MOVIE
+    REMOVE_MOVIE,
+    LOCALES_LOADED
 } from "../constants/action-types";
 
 const initialState = {
     movies: [],
     errors: [],
-    remoteArticles: []
+    remoteArticles: [],
+    remoteLocales: [],
 };
 function rootReducer(state = initialState, action) {
     switch (action.type) {
@@ -39,6 +41,11 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 remoteArticles: state.remoteArticles.concat(action.payload)
+            };
+        case LOCALES_LOADED:
+            return {
+                ...state,
+                remoteLocales: state.remoteLocales.concat(action.payload)
             };
         case DATA_REQUESTED:
             return {

@@ -6,3 +6,4 @@ export const DATA_LOADED = "DATA_LOADED";
 export const DATA_REQUESTED = "DATA_REQUESTED";
 export const DATA_YIELDED = "DATA_YIELDED";
 export const API_ERRORED = "API_ERRORED";
+export const LOCALES_LOADED = "LOCALES_LOADED";
